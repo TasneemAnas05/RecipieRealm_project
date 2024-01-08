@@ -1,0 +1,42 @@
+#foot {
+  font-size: medium;
+  text-align: center;
+  border: none;
+  background-color: #20292f;
+  padding: 1%;
+  color: #ddd3bf;
+  margin-bottom: 2%;
+}
+
+
+
+input[type="text"],
+input[type="email"],
+#message {
+  margin-top: 30px;
+  border: 1px solid #4cab4c;
+}
+
+#button_id {
+  background-color: #ef8451;
+  border: none;
+  color: white;
+  font-size: large;
+  padding-left: 15pt;
+  padding-right: 15pt;
+  padding-top: 5pt;
+  padding-bottom: 5pt;
+}
+
+#button_id:hover {
+  background-color: #ec6b30;
+}
+
+#green {
+  color: #4cab4c;
+}
+
+#icon {
+  font-size: 2em;
+  color: #ef8451;
+}

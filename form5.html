@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" href="index.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script>
+      function calling2() {
+        var gender =document.getElementsByName("radios");
+        var breakfast = document.getElementsByName("breakfast");
+        var desserts = document.getElementsByName("desserts");
+        var appetizers = document.getElementsByName("appetizers");
+        var lunch = document.getElementsByName("lunch");
+
+        var ans = "";
+        for(var i=0;i<gender.length;i++){
+            if(gender[i].checked)
+            {
+                ans+="Your gender is: "+gender[i].value+"\n";
+            }
+            else{
+              ans+="Please check"+"\n";
+            }}
+        for (var i = 0; i < breakfast.length; i++) {
+          if (breakfast[i].checked) {
+            ans +=
+              "The calories of :" +
+             breakfast[i].id+
+              " are :" +
+              breakfast[i].value +
+              "\n";
+          }
+        }
+
+        for (var i = 0; i < desserts.length; i++) {
+          if (desserts[i].checked) {
+            ans +=
+              "The calories of :" +
+              desserts[i].id +
+              " are :" +
+              desserts[i].value +
+              "\n";
+          }
+        }
+
+        for (var i = 0; i < appetizers.length; i++) {
+          if (appetizers[i].checked) {
+            ans +=
+              "The calories of :" +
+              appetizers[i].id +
+              " are :" +
+              appetizers[i].value +
+              "\n";
+          }
+        }
+
+        for (var i = 0; i < lunch.length; i++) {
+          if (lunch[i].checked) {
+            ans +=
+              "The calories of :" +
+              lunch[i].id +
+              "are :" +
+              lunch[i].value +
+              "\n";
+          }
+        }
+        return ans;
+      }
+    </script>
+    <script>
+      function validtion(e) {
+        //check validation for name
+        var ans = "";
+        var username = document.getElementById("usernameid").value;
+        if (username == "") {
+          document.getElementById("span1").innerHTML =
+            "Please enter your name again<br>";
+        }
+        else
+        document.getElementById("span1").innerHTML =" ";
+            
+        //check validation for email
+        var email1 = document.getElementById("emailid").value;
+        var email2 = document.getElementById("emailidConform").value;
+        if (email1 != email2) {
+          document.getElementById("span2").innerHTML =
+            "Please enter your email again<br>";
+        }
+        else if(email1==""||email2==""){
+        document.getElementById("span2").innerHTML =
+            "Please enter your email ";}
+        else{
+          document.getElementById("span2").innerHTML ="";
+        }
+
+
+        //check validation for radio
+        var radio = document.getElementsByName("radios");
+        var radioVlaue = 0;
+        var check;
+        for (var i = 0; i < radio.length; i++) {
+          if (radio[i].checked) {
+            radioVlaue += 1;
+          }
+          check = radio[i].value;
+        }
+
+        if (radioVlaue == 0)
+          document.getElementById("span3").innerHTML = "please check ";
+        else
+        document.getElementById("span3").innerHTML = " ";
+
+        // check validation for checkbox
+        if (e == 4) {
+          document.getElementById("span4").innerHTML = "please check ";
+        }
+        else
+        document.getElementById("span4").innerHTML = " ";
+
+      }
+    </script>
+    <script>
+      function cal1() {
+        //check if it is checked or not
+        var x = document.getElementsByName("level");
+        var temp = "";
+        var e = 0;
+        for (var i = 0; i < x.length; i++) {
+          if (x[i].checked) {
+            temp += x[i].value;
+          } else {
+            e += 1;
+          }
+        }
+
+        if (e == 4) {
+          validtion(e);
+        } else show(temp);
+      }
+
+      function show(t) {
+        //prepare the next checkbox
+        var output = "<br><br><div class='form-check form-check-inline'>";
+
+        for (var i = 0; i < t.length; i++) {
+          //at the value change it to right caloire and at foodc change it to the name of the meal
+          if (t[i] == "2") {
+            output +=
+              "<label class='form-check-label'> choose from breakfast:" +
+              "<input type='checkbox' name='breakfast' value='1018' id='Pancake'>Pancake" +
+              "<input type='checkbox' name='breakfast' value='287' id='Omelette'>Omelette" +
+              "<input type='checkbox' name='breakfast' value='1107' id='French Toast'>French Toast" +
+              "</label><br>";
+          } else if (t[i] == "3") {
+            output +=
+              "<label class='form-check-label'> choose from desserts:" +
+              "<input type='checkbox' name='desserts' value='5540' id='Lazy Cake'>Lazy Cake" +
+              "<input type='checkbox' name='desserts' value='3073' id='Cookies'>Cookies" +
+              "<input type='checkbox' name='desserts' value='1724' id='Mini cheesecakes'>Mini cheesecakes" +
+              "</label><br>";
+          } else if (t[i] == "4") {
+            output +=
+              "<label class='form-check-label'> choose from appetizers:" +
+              "<input type='checkbox' name='appetizers' value='2783' id='Cabbage salad'>Cabbage salad" +
+              "<input type='checkbox' name='appetizers' value='1040' id='Vegetables soup'>Vegetables soup" +
+              "<input type='checkbox' name='appetizers' value='792.06' id='Tabouli'>Tabouli" +
+              "</label><br>";
+          } else if (t[i] == "1"){
+            output +=
+              "<label class='form-check-label'> choose from lunch:" +
+              "<input type='checkbox' name='lunch' value='1004' id='Chicken Sandwiches'>Chicken Sandwiches" +
+              "<input type='checkbox' name='lunch' value='3267' id='Lasagna'>Lasagna" +
+              "<input type='checkbox' name='lunch' value='1413' id='Pizza'>Pizza" +
+              "</label><br>";
+          }
+          else{
+            "<label>please check</label>"
+            document.getElementsByName("level").innerHTML =
+            "please check<br>";
+          }
+        }
+        document.getElementById("first").innerHTML =
+          output +
+          "</form>" +
+          "<input type='button' value='select' onclick='cal2()'' /> ";
+      }
+
+      function cal2() {
+        var x = document.getElementsByName("breakfast");
+        var all = 0;
+        for (var i = 0; i < x.length; i++) {
+          if (x[i].checked) {
+            all += parseInt(x[i].value);
+          }
+        }
+        var x = document.getElementsByName("desserts");
+        for (var i = 0; i < x.length; i++) {
+          if (x[i].checked) {
+            all += parseInt(x[i].value);
+          }
+        }
+        var x = document.getElementsByName("appetizers");
+        for (var i = 0; i < x.length; i++) {
+          if (x[i].checked) {
+            all += parseInt(x[i].value);
+          }
+        }
+
+        var x = document.getElementsByName("lunch");
+        for (var i = 0; i < x.length; i++) {
+          if (x[i].checked) {
+            all += parseInt(x[i].value);
+          }
+        }
+
+        document.getElementById("floatingTextarea2").value =
+        "Username is : "+document.getElementById("usernameid").value+"\n"
+          +"Email is : "+document.getElementById("emailid").value+"\n"
+          +"Calories are: " + all+"\n"+calling2()+"\n";
+        
+        
+      }
+    </script>
+</head>
+<body>
+     <!--Navbar-->
+     <nav class="navbar navbar-expand-lg" style="background-color: #ffffff">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="tpictures/logo6.png" /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item ">
+                <a class="nav-link " href="index.html" style="color: #4cab4c"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="About_us.html" style="color: #4cab4c"
+                  >About_us</a
+                >
+              </li>
+  
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="services.html"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="color: #4cab4c"
+                >
+                  services
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="services.html">Latest Recipies</a></li>
+                  <li><a class="dropdown-item" href="#">Appetizers</a></li>
+                  <li><a class="dropdown-item" href="#">Breakfast</a></li>
+                  <li><a class="dropdown-item" href="#">Desserts</a></li>
+                  <li><a class="dropdown-item" href="#">Lunch</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="testimonial.html" style="color: #4cab4c"
+                  >testimonial</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="Contact_us.html"
+                  style="color:#4cab4c "
+                  >Contact_us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="SiteMap.html" style="color: #4cab4c"
+                  >SiteMap</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="form5.html" style="color: #093532"
+                  >Register</a
+                >
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn" style="background-color: #ef8451" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+        <br>
+    <br>
+    <h1 style="text-align: center; color: #4cab4c ;">Register with us</h1>
+    <!-- <script>
+                //time and date
+           var date = new Date();
+
+          document.write(" " + date.getDate() + " - " + (date.getMonth() + 1) + " - " + date.getFullYear() + "");
+
+          document.write("  " + date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds() + "<br>");
+
+    </script> -->
+    <div style="text-align: center;"><script>
+              //time and date
+        var date = new Date();
+
+        document.write(" " + date.getDate() + " - " + (date.getMonth() + 1) + " - " + date.getFullYear() + "");
+
+        document.write("  " + date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds() + "<br>");
+
+        </script>
+</div>
+    <div class="container">
+        
+        <form action="">
+            <div class="row" style="text-align: center;">
+                <div class="col lg-10 sm-4">
+                    <!-- Username -->
+                    <label style="margin-bottom: 2%; margin-top: 2%; color:#ef8451; ">Enter Your name:</label>
+                    <div class="input-group flex-nowrap">
+                      <input  type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" style="margin-left: 25%; margin-right: 25%;" id="usernameid">
+                    </div>
+                    <span id="span1"></span>
+                    <br>
+                </div>
+            </div>
+            
+            <div class="row" style="text-align: center;">
+              <div class="col lg-10 sm-4">
+                   <!-- Email -->
+                   <label style="margin-bottom: 2%; margin-top: 2%; color:#ef8451; ">Enter a valid Email:</label>
+                   <div class="input-group flex-nowrap">
+                     <input  type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping" style="margin-left: 25%; margin-right: 25%;" id="emailid">
+                   </div>
+                   <!-- <span id="span2"></span> -->
+                   <br>
+                   
+              </div>
+            </div>
+            <div class="row" style="text-align: center;">
+              <div class="col lg-10 sm-4">
+                   <!-- Email confirmation-->
+                   <label style="margin-bottom: 2%; margin-top: 2%; color:#ef8451; ">Confirm your Email:</label>
+                   <div class="input-group flex-nowrap">
+                     <input  type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping" style="margin-left: 25%; margin-right: 25%;" id="emailidConform">
+                   </div>
+                   <span id="span2" ></span>
+                   <br>
+                   
+              </div>
+            </div>
+
+            <div class="row" style="text-align: center;">
+              <div class="col lg-10 sm-4">
+                   <!-- Radio buttons -->
+                    <h6 style="margin-top: 2%; margin-bottom: 2%; color: #ef8451; ">
+                      Choose your gender :
+                    </h6>
+                    <form style="margin-top: 3%; margin-bottom: 3%; margin-left: 40%; margin-right: 40;">
+                      <input type="radio" name="radios" />Female
+                      <input type="radio" name="radios"  />Male
+                    </form>
+
+                     <span id="span3" style="color: red;"></span>
+                   <br>
+                   <br>
+                   <br>
+              </div>
+            </div>
+
+            <div class="row" style="text-align: center;">
+              <div class="col lg-10 sm-4">
+                      <!-- CheckBoxes -->
+                <h6 style="color: #ef8451; margin-bottom: 2% ;">
+                  Choose a recipie :
+                </h6>
+                <div class="form-check form-check-inline" >
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="1"
+                    name="level"
+
+                  />
+                  <label class="form-check-label" for="inlineCheckbox1"
+                    >Lunch</label
+                  >
+                </div>
+                <div class="form-check form-check-inline" >
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="2"
+                    name="level"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox2"
+                    >Breakfast</label
+                  >
+                </div>
+                <div class="form-check form-check-inline" >
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox3"
+                    value="3"
+                    name="level"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox3"
+                    >Desserts</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox3"
+                    value="4"
+                    name="level"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox3"
+                    >Appetizers</label
+                  >
+                  <span id="span4" style="color: red;"></span>
+                  <!-- <div id="second"></div> -->
+                </div>
+                <div id="first"></div>
+
+                  </div>
+                  <br>
+                  <br>
+            </div>
+
+            <div class="row" style="text-align: center;">
+              <div class="col lg-10 sm-4">
+                      <!-- text area -->
+                <h6 style="margin-bottom: 2%; margin-top: 2%; color: #ef8451">
+                  Result:
+                </h6>
+                <div class="form-floating" style="margin-bottom: 3%">
+                  <textarea
+                    class="form-control"
+                    placeholder="Leave a comment here"
+                    id="floatingTextarea2"
+                    style="height: 100px"
+                  ></textarea>
+                  <label for="floatingTextarea2">Result</label>
+                </div>
+                <br />
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  onclick="validtion(); cal1();"
+                >
+                  Submit
+                </button>
+                  </div>
+            </div>
+        </form>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
